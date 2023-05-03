@@ -1,0 +1,60 @@
+* { 
+    margin: 0;
+}
+
+/** This is the css for header. This is to change the background colour of the header. **/
+
+header{
+    background-color: #ff3c56;
+
+}
+
+/** This is the css for footer. It changes the colour of the background to add contrast. **/
+
+footer{
+    background-color: #ffffff;
+}
+
+body{
+    background-color: #141E26;
+    
+}
+
+div{
+    display: flex;
+}
+
+.center{
+    position:absolute;
+    top: 5%;
+    width: 100%;
+}
+
+#navBar { 
+    display: flex;
+    justify-content: center;
+    
+}
+
+.brightbackground{
+    background-color: #293df2;
+}
+
+.boldtitle{
+    margin: 1% auto;
+    width: 60%;
+    text-align: center;
+    font-size: 32px;  
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 32px;
+}
+
+.smalltext{
+    font-size: small;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 16px;
+    width: 20%;
+    margin: 1% auto;
+}
+
