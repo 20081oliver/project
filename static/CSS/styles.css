@@ -6,7 +6,7 @@
 
 header{
     background-color: #ff3c56;
-
+    text-align: center;
 }
 
 /** This is the css for footer. It changes the colour of the background to add contrast. **/
@@ -33,7 +33,8 @@ div{
 #navBar { 
     display: flex;
     justify-content: center;
-    
+    padding: 0 3%;
+    text-align: center;
 }
 
 .brightbackground{
