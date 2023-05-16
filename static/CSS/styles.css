@@ -5,7 +5,7 @@
 /** This is the css for header. This is to change the background colour of the header. **/
 
 header{
-    background-color: #66f723;
+    background-color: #1d5c00;
 
 }
 
@@ -16,7 +16,7 @@ footer{
 }
 
 body{
-    background-color: #949494;
+    background-color: #000000;
     
 }
 
@@ -45,7 +45,7 @@ div{
 }
 
 .brightbackground{
-    background-color: #28f000;
+    background-color: #00b118;
 }
 
 .boldtitle{

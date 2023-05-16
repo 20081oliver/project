@@ -14,6 +14,15 @@ def home():
 def about():
     return render_template("about.html")
 
+@app.route('/all_songs')
+def all_pizzas():
+    conn = sqlite3.connect('song.db')
+    cur = conn.cursor()
+    cur.execute('SELECT * FROM song')
+    results = cur.fetchall()
+    print(results)
+    return render_template("all_songs.html", results=results)
+
 
 if __name__ == "__main__":
     app.run(debug = True)    
