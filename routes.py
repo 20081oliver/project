@@ -15,7 +15,7 @@ def about():
     return render_template("about.html")
 
 @app.route('/all_songs')
-def all_pizzas():
+def all_songs():
     conn = sqlite3.connect('song.db')
     cur = conn.cursor()
     cur.execute('SELECT * FROM song')
