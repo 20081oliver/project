@@ -18,11 +18,11 @@ def about():
 def all_songs():
     conn = sqlite3.connect('song.db')
     cur = conn.cursor()
-    cur.execute('SELECT * FROM song')
+    cur.execute('SELECT name FROM song')
     results = cur.fetchall()
     print(results)
     return render_template("all_songs.html", results=results)
 
 
 if __name__ == "__main__":
-    app.run(debug = True)    
+    app.run(debug = True)
