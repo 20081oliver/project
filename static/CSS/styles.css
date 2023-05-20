@@ -5,18 +5,18 @@
 /** This is the css for header. This is to change the background colour of the header. **/
 
 header{
-    background-color: #1d5c00;
+    background-color: #ffffff;
 
 }
 
 /** This is the css for footer. It changes the colour of the background to add contrast. **/
 
 footer{
-    background-color: #5c5c5c;
+    background-color: #ffffff;
 }
 
 body{
-    background-color: #000000;
+    background-color: #ffffff;
     
 }
 
@@ -25,7 +25,7 @@ div{
 }
 
 .center{
-    position: center;
+    position:absolute;
     top: 5%;
     width: 100%;
 }
