@@ -55,6 +55,7 @@ div{
     font-size: 32px;  
     font-family:'sans-serif', 'Arial Narrow', Arial;
     border-radius: 32px;
+    justify-content: center;
 }
 
 .smalltext{
