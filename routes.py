@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import sqlite3
 
 
@@ -23,16 +23,20 @@ def all_songs():
     print(results)
     return render_template("all_songs.html", results=results)
 
-@app.route('/add_song', methods=['POST'])
-def add_song():
+@app.post('/add_a_song')
+def add_a_song():
     conn = sqlite3.connect('song.db')
     cur = conn.cursor()
     sql = ('INSERT INTO song (name, artist, album) VALUES (?,?,?)')
-    cur.execute(sql, (request.form['song_name'], request.form['artist'], request.form['album']))
+    cur.execute(sql, (request.form['name'], request.form['artist'], request.form['album']))
     conn.commit()
     results = cur.fetchall()
-    print(results)
-    return render_template("add_song.html", results = results)
+    return redirect("all_songs")
+  
+
+@app.route('/add_song', methods=['POST', 'GET'])
+def add_song():
+    return render_template("add_song.html")
 
 if __name__ == "__main__":
     app.run(debug = True)
