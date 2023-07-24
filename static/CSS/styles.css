@@ -16,7 +16,7 @@ footer{
 }
 
 body{
-    background-color: #ffffff;
+    background-color: #7c7c7c;
     
 }
 
@@ -52,7 +52,7 @@ div{
     margin: 1% auto;
     width: 60%;
     text-align: center;
-    font-size: 32px;  
+    font-size: 32px;
     font-family:'sans-serif', 'Arial Narrow', Arial;
     border-radius: 32px;
     justify-content: center;
