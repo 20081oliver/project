@@ -39,6 +39,7 @@ def add_a_song():
 
 # @app.route('/delete/<int:id>')
 
+
 @app.route('/add_song', methods=['POST', 'GET'])
 def add_song():
     return render_template("add_song.html")
