@@ -3,7 +3,9 @@ import sqlite3
 
 
 app = Flask(__name__)
-
+conn = sqlite3.connect('song.db')
+conn = sqlite3.connect('song.db', check_same_thread=False)
+cur = conn.cursor()
 
 @app.route('/')
 def home():
@@ -17,9 +19,7 @@ def about():
 
 @app.route('/all_songs')
 def all_songs():
-    conn = sqlite3.connect('song.db')
-    cur = conn.cursor()
-    cur.execute('SELECT name, artist FROM song')
+    cur.execute('SELECT name, artist, album FROM song')
     results = cur.fetchall()
     print(results)
     return render_template("all_songs.html", results=results)
@@ -27,8 +27,15 @@ def all_songs():
 
 @app.post('/add_a_song')
 def add_a_song():
-    conn = sqlite3.connect('song.db')
-    cur = conn.cursor()
+    sql = ('INSERT INTO song (name, artist, album) VALUES (?,?,?)')
+    cur.execute(sql, (request.form['name'], request.form['artist'], request.form['album']))
+    conn.commit()
+    results = cur.fetchall()
+    print(results)
+    return redirect("all_songs")
+
+@app.post('/edit_a_song/<string:id>')
+def edit_a_song(id):
     sql = ('INSERT INTO song (name, artist, album) VALUES (?,?,?)')
     cur.execute(sql, (request.form['name'], request.form['artist'], request.form['album']))
     conn.commit()
@@ -37,7 +44,12 @@ def add_a_song():
     return redirect("all_songs")
 
 
-# @app.route('/delete/<int:id>')
+app.post('/delete_song')
+def delete_song():
+    sql = "DELETE FROM song WHERE id = ?"
+    cur.execute(sql, (request.form['song_id']))
+    conn.commit()
+    return redirect("all_songs")
 
 
 @app.route('/add_song', methods=['POST', 'GET'])
