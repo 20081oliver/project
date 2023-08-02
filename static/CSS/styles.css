@@ -16,7 +16,7 @@ footer{
 }
 
 body{
-    background-color: #7c7c7c;
+    background-color: #ffffff;
     
 }
 
@@ -67,3 +67,21 @@ div{
     margin: 1% auto;
 }
 
+.btn {
+    font-size: 11px;
+    font-weight: 300;
+    padding: 7px 10px;
+    color: #000000;
+    background-color: rgb(255, 255, 255);
+    border: 5px solid black;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    transform: translateY(-7px);
+}
+
+button {
+    background-color: #ffffff;
+    border: none;
+}
