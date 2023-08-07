@@ -5,10 +5,12 @@
 <html>
 <body align = "center">
 
-<form action="/edit_a_song" method="post">
-        Song Name: <input type="text" name="name">
-        Artist: <input type="text" name="artist">
-        Album: <input type="text" name="album">
+<h1>Edit Song</h1>
+
+<form action="/edit_a_song/{{song_to_update.id}}" method="post">
+        Song Name: <input type="text" name="name" value="{{song_to_update.name}}">
+        Artist: <input type="text" name="artist" value="{{song_to_update.artist}}">
+        Album: <input type="text" name="album" value="{{song_to_update.album}}">
         <button>Submit</button>
 </form>
 
