@@ -7,6 +7,7 @@ conn = sqlite3.connect('song.db')
 conn = sqlite3.connect('song.db', check_same_thread=False)
 cur = conn.cursor()
 
+
 @app.route('/')
 def home():
     return render_template("home.html")
@@ -34,27 +35,36 @@ def add_a_song():
     print(results)
     return redirect("all_songs")
 
-@app.post('/edit_a_song/<string:id>')
+
+@app.route('/edit_a_song/<int:id>', methods=['POST', 'GET'])
 def edit_a_song(id):
-    sql = ('INSERT INTO song (name, artist, album) VALUES (?,?,?)')
-    cur.execute(sql, (request.form['name'], request.form['artist'], request.form['album']))
-    conn.commit()
-    results = cur.fetchall()
-    print(results)
-    return redirect("all_songs")
+    song_to_update = all_songs.query(id)
+    if request.method == "POST":
+        song_to_update.name = request.form['name']
+        song_to_update.name = request.form['artist']
+        song_to_update.name = request.form['album']
+        sql = ('INSERT INTO song (name, artist, album) VALUES (?,?,?)')
+        cur.execute(sql, (request.form['name'], request.form['artist'], request.form['album'],))
+        cur.session.commit()
+    else: 
+        print("")
+    return render_template('edit_song.html', song_to_update=song_to_update)
 
 
-app.post('/delete_song')
+    #sql = ('INSERT INTO song (name, artist, album) VALUES (?,?,?)')
+    #cur.execute(sql, (request.form['name'], request.form['artist'], request.form['album']))
+    #conn.commit()
+    #results = cur.fetchall()
+    #print(results)
+    #return redirect("all_songs")
+
+
+@app.post('/delete_song')
 def delete_song():
     sql = "DELETE FROM song WHERE id = ?"
     cur.execute(sql, (request.form['song_id']))
     conn.commit()
     return redirect("all_songs")
-
-
-@app.route('/add_song', methods=['POST', 'GET'])
-def add_song():
-    return render_template("add_song.html")
 
 
 if __name__ == "__main__":
