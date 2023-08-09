@@ -64,9 +64,10 @@ def delete_song(id):
     conn = sqlite3.connect("song.db")
     cur = conn.cursor
     sql = "DELETE FROM song WHERE id = ?"
-    cur.execute(sql, (request.form['song.id']))
+    cur.execute(sql, (request.form['song_id']))
     conn.commit()
     return redirect("all_songs")
+
 
 
 if __name__ == "__main__":
