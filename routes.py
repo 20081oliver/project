@@ -46,7 +46,7 @@ def edit_a_song(id):
         sql = ('INSERT INTO song (name, artist, album) VALUES (?,?,?)')
         cur.execute(sql, (request.form['name'], request.form['artist'], request.form['album'],))
         cur.session.commit()
-    else: 
+    else:
         print("")
     return render_template('edit_song.html', song_to_update=song_to_update)
 
@@ -59,10 +59,12 @@ def edit_a_song(id):
     #return redirect("all_songs")
 
 
-@app.post('/delete_song')
-def delete_song():
+@app.post('/delete/<int:id>')
+def delete_song(id):
+    conn = sqlite3.connect("song.db")
+    cur = conn.cursor
     sql = "DELETE FROM song WHERE id = ?"
-    cur.execute(sql, (request.form['song_id']))
+    cur.execute(sql, (request.form['song.id']))
     conn.commit()
     return redirect("all_songs")
 
