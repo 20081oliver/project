@@ -1,13 +1,43 @@
-* { 
+* {
+    box-sizing: border-box;
     margin: 0;
-}
+    padding: 0;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: #24252a;
+  }
+  
+  
+  .nav__links a {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #edf0f1;
+    text-decoration: none;
+  }
+  
+  .nav__links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav__links li {
+    padding: 0px 20px;
+  }
+  
+  .nav__links li a {
+    transition: color 0.3s ease 0s;
+  }
+  
+  .nav__links li a:hover {
+    color: #0088a9;
+  }
+  
 
-/** This is the css for header. This is to change the background colour of the header. **/
-
-header{
-    background-color: #ffffff;
-
-}
 
 /** This is the css for footer. It changes the colour of the background to add contrast. **/
 
@@ -31,30 +61,18 @@ div{
 }
 
 
-#navBar a { 
-    display: flex;
-    justify-content: space-between;
-    padding: 0 3%;
-}
-
-#navBar { 
-    display: flex;
-    justify-content: center;
-    
-    
-}
-
 .brightbackground{
     background-color: #00b118;
 }
 
 .boldtitle{
     margin: 1% auto;
-    width: 60%;
+    width: 100%;
+    padding: 50px 20%;
     text-align: center;
     font-size: 32px;
     font-family:'sans-serif', 'Arial Narrow', Arial;
-    border-radius: 32px;
+    border-radius: 0px;
     justify-content: center;
 }
 
@@ -68,6 +86,7 @@ div{
 }
 
 .btn {
+    font-family: "Roboto", sans-serif;
     font-size: 11px;
     font-weight: 300;
     padding: 7px 10px;
@@ -75,10 +94,18 @@ div{
     background-color: rgb(255, 255, 255);
     border: 5px solid black;
     border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
 }
 
-.btn:hover {
-    transform: translateY(-7px);
+.btn:hover, .btn:focus, .btn:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 button {
