@@ -1,21 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
+<h2 class="boldtitle">Songs Display Here</h2>
 {% for item in results %}
-<body align = "center"></body>
-    <h2><a href = "/song/{{results[0]}}"></a></h2><h1>{{item[0]}}</h1><h3>{{item [1]}}</h3><h3>{{item[2]}}</h3>
+<body align = "center">
 
-    <button type="button">
-        <h3 class="btn">
-          <a href="/delete/{{song_id}}">Delete</a> 
-          </h3>
-        </button>
+    <h2 class = "smalltext"><a href = "/song/{{results[0]}}"></a></h2><h1>{{item[0]}}</h1><h3>{{item [1]}}</h3><h3>{{item[2]}}</h3>
 
-
-    <button type="button">
-    <h3 class="btn">
-      <a href="/edit_a_song">Edit</a> 
-      </h3>
-    </button>
-
+  </body>
 {% endfor %}
 {% endblock %}

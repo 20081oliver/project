@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="boldtitle">       
+<!DOCTYPE html>
+<html>
+<body align = "center">
+        
+<h2 class="boldtitle">Login</h2>
+
+<form action="/admin/login" method="post">
+        Password <input type="text" name="password" required>
+        <button>
+                <h3 class="btn">
+                <a>Submit</a> 
+                </h3>
+        </button> 
+</form>
+
+
+</body>
+</html>
+</div>
+{% endblock %}

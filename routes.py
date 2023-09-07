@@ -36,38 +36,40 @@ def add_a_song():
     return redirect("all_songs")
 
 
-@app.route('/edit_a_song/<int:id>', methods=['POST', 'GET'])
-def edit_a_song(id):
-    song_to_update = all_songs.query(id)
-    if request.method == "POST":
-        song_to_update.name = request.form['name']
-        song_to_update.name = request.form['artist']
-        song_to_update.name = request.form['album']
-        sql = ('INSERT INTO song (name, artist, album) VALUES (?,?,?)')
-        cur.execute(sql, (request.form['name'], request.form['artist'], request.form['album'],))
-        cur.session.commit()
-    else:
-        print("")
-    return render_template('edit_song.html', song_to_update=song_to_update)
-
-
-    #sql = ('INSERT INTO song (name, artist, album) VALUES (?,?,?)')
-    #cur.execute(sql, (request.form['name'], request.form['artist'], request.form['album']))
-    #conn.commit()
-    #results = cur.fetchall()
-    #print(results)
-    #return redirect("all_songs")
-
-
-@app.post('/delete/<int:id>')
-def delete_song(id):
+@app.route('/delete/<name>')
+def delete_song(name):
     conn = sqlite3.connect("song.db")
-    cur = conn.cursor
-    sql = "DELETE FROM song WHERE id = ?"
-    cur.execute(sql, (request.form['song_id']))
-    conn.commit()
-    return redirect("all_songs")
 
+    cur.execute("DELETE FROM song WHERE name = ?", (name,))
+    conn.commit()
+    print("name")
+    return redirect("/admin_all_songs")
+
+
+password = "1234"
+typed = False
+
+
+@app.route("/admin/login", methods=['GET', 'POST'])
+def adminLogin():
+    global password
+    global typed
+    if request.method == 'POST':
+        formRequest = request.form['password']
+        if formRequest == password:
+            typed = True
+            return redirect("/admin_all_songs")
+        else:
+            return redirect("/admin/login")
+    return render_template("login.html")
+
+
+@app.route('/admin_all_songs')
+def adminSongs():
+    cur.execute('SELECT name, artist, album FROM song')
+    results = cur.fetchall()
+    print(results)
+    return render_template("admin_all_songs.html", results=results)
 
 
 if __name__ == "__main__":
