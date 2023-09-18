@@ -4,6 +4,7 @@
     padding: 0;
   }
   
+  /* header design */
   header {
     font-family: Monospace;
     color: #ffffff;
@@ -12,29 +13,34 @@
     align-items: center;
     padding: 30px 10%;
     background-color: #24252a;
+    opacity: 50%;
   }
   
-  
+  /* This code controls the navigation link texts */
   .nav__links a {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    color: #edf0f1;
+    color: #ffffff;
     text-decoration: none;
   }
   
+  /* arranges the navigation links */
   .nav__links {
     list-style: none;
     display: flex;
   }
   
+/* how far apart the navigation links are from each other */
   .nav__links li {
     padding: 0px 20px;
   }
   
+  /* navigation link text animation */
   .nav__links li a {
     transition: color 0.3s ease 0s;
   }
   
+  /* color change when hovering link */
   .nav__links li a:hover {
     color: #0088a9;
   }
@@ -43,53 +49,69 @@
 
 /** This is the css for footer.**/
 
-footer{
+.footer {
   position: fixed;
+  left: 0;
   bottom: 0;
   width: 100%;
-  height: 90px;   /* Height of the footer */
-  background: rgb(255, 255, 255);
+  opacity: 100%;
+  text-align: left;
 }
 
+/* website body */
 body{
-    background-color: #ffffff;
-    
+    background-image: url('bg.jpg');
+    background-repeat: no-repeat;
+    background-image: fill;
+    background-position-x: center;
+    background-attachment: fixed; /* this keeps the background image stay on the screen so when scrolling down, the image follows */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main{
+  flex-grow: 1;
 }
 
 
-
-.center{
-  font-family: "Montserrat", sans-serif;
-    position:absolute;
-    top: 5%;
-    width: 100%;
-}
-
-
+/* background color */
 .brightbackground{
-    background-color: #ffffff;
+    background-color: transparent;
 }
 
+/* bold title text design */
 .boldtitle{
     margin: 1% auto;
     width: 100%;
     padding: 5px 10%;
     text-align: center;
     font-size: 32px;
+    color: #ffffff;
     font-family:'sans-serif', 'Arial Narrow', Arial;
     border-radius: 0px;
     justify-content: center;
 }
 
-.smalltext{
-    font-size: small;
-    text-align: center;
-    font-family: Garamond, serif;
-    border-radius: 16px;
-    width: 5%;
-    margin: 1% auto;
+/* colour for h1, h2, h3 */
+h1, h2, h3 {
+  font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
+  margin: 1% auto;
+  color: white;
+  }
+
+/* css for footer text */
+.footertext{
+  font-size: 10px;
+  color: #ffffff;
+  text-align: left;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius: 30px;
+  width: 100%;
+  margin: 1% auto;
 }
 
+/* button code */
 .btn {
     font-family: "Roboto", sans-serif;
     font-size: 11px;
@@ -106,14 +128,14 @@ body{
     -webkit-transition-property: box-shadow, transform;
     transition-property: box-shadow, transform;
 }
-
+/* what happens when hovering over the button */
 .btn:hover, .btn:focus, .btn:active {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(29, 255, 225, 0.5);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
-
+/* hiding default button */
 button {
-    background-color: #ffffff;
+    background-color: transparent;
     border: none;
 }

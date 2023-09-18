@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="boldtitle">       
+<div class="boldtitle">
 <!DOCTYPE html>
 <html>
 <body align = "center">
@@ -8,9 +8,9 @@
 <h2 class="boldtitle"> Add A Song</h2>
 
 <form action="/add_a_song" method="post">
-        Song Name: <input type="text" name="name" required>
-        Artist: <input type="text" name="artist" required>
-        Album: <input type="text" name="album" required>
+        Song Name: <input type="text" name="name" required maxlength="50">
+        Artist: <input type="text" name="artist" required maxlength="50">
+        Album: <input type="text" name="album" required maxlength="50">
         <button>
                 <h3 class="btn">
                 <a>Submit</a> 

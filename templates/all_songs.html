@@ -1,10 +1,15 @@
 {% extends 'layout.html' %}
 {% block content %}
-<h2 class="boldtitle">Songs Display Here</h2>
+
+{% for message in get_flashed_messages() %}
+<h2>{{message}}</h2>
+{% endfor %}
+
+<h2 class="boldtitle">Songs Display Here:</h2>
 {% for item in results %}
 <body align = "center">
 
-    <h2 class = "smalltext"><a href = "/song/{{results[0]}}"></a></h2><h1>{{item[0]}}</h1><h3>{{item [1]}}</h3><h3>{{item[2]}}</h3>
+    <h2><a href = "/song/{{results[0]}}"></a></h2><h1>{{item[0]}}</h1><h3>{{item [1]}}</h3><h3>{{item[2]}}</h3>
 
   </body>
 {% endfor %}

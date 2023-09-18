@@ -1,11 +1,16 @@
 {% extends 'layout.html' %}
 {% block content %}
+
+{% for message in get_flashed_messages() %}
+<h2>{{message}}</h2>
+{% endfor %}
+
 <div class="boldtitle">       
 <!DOCTYPE html>
 <html>
 <body align = "center">
         
-<h2 class="boldtitle">Login</h2>
+<h2 class="boldtitle">Admin Login</h2>
 
 <form action="/admin/login" method="post">
         Password <input type="text" name="password" required>
