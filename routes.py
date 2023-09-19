@@ -38,7 +38,8 @@ def all_songs():
 @app.post('/add_a_song')
 def add_a_song():
     sql = ('INSERT INTO song (name, artist, album) VALUES (?,?,?)')
-    cur.execute(sql, (request.form['name'], request.form['artist'], request.form['album']))
+    cur.execute(sql, (request.form['name'], request.form['artist'],
+                request.form['album']))
     conn.commit()
     results = cur.fetchall()
     print(results)
@@ -73,9 +74,12 @@ def adminLogin():
         if formRequest == password:
             typed = True
             flash("Login successful!")
-            return redirect("/admin_all_songs")  # if the password is correct, the user will be redirected to "admin_all_songs" and get flashed with "Login successfull!"
+            # if the password is correct, the user will be redirected to
+            # "admin_all_songs" and get flashed with "Login successfull!"
+            return redirect("/admin_all_songs") 
         else:
-            flash('Incorrect password')  # if the password is incorrect a message will flash "Incorrect Password"
+            flash('Incorrect password')  # if the password is incorrect a
+            #  message will flash "Incorrect Password"
             return redirect("/admin/login")
     return render_template("login.html")
 
