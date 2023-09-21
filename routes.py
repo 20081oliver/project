@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash, abort
+from flask import Flask, render_template, request, redirect, flash
 import sqlite3
 
 
@@ -50,7 +50,7 @@ def add_a_song():
     # after requesting and getting the user input the database will commit
     results = cur.fetchall()
     print(results)
-    flash('Song submitted!')
+    flash('Song submitted!')  # flashes the message onto the page
     return redirect("all_songs")
 
 
@@ -61,16 +61,17 @@ def add_a_song():
 def delete_song(name):
     conn = sqlite3.connect("song.db")
     cur.execute("DELETE FROM song WHERE name = ?", (name,))
+    # finds the name of the song and deletes it
     conn.commit()
     print("name")
     return redirect("/admin_all_songs")
 
 
-# admin login page
+# admin login system
 
 
 password = "1234"  # password to access admin
-typed = False
+typed = False  # password has not been typed yet
 
 
 @app.route("/admin/login", methods=['GET', 'POST'])
@@ -80,7 +81,7 @@ def adminLogin():
     if request.method == 'POST':
         formRequest = request.form['password']
         if formRequest == password:
-            typed = True
+            typed = True  # typed will equal true if password is correct
             flash("Login successful!")
             # if the password is correct, the user will be redirected to
             # "admin_all_songs" and get flashed with "Login successfull!"
