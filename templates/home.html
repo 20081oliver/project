@@ -6,17 +6,44 @@
 <body align = "center">
         
 <h2 class="boldtitle"> Add A Song</h2>
-
+<h5>50 character limit for each input field</h5>
 <form action="/add_a_song" method="post">
-        Song Name: <input type="text" name="name" required maxlength="50">
-        Artist: <input type="text" name="artist" required maxlength="50">
-        Album: <input type="text" name="album" required maxlength="50">
+        Song Name: <input type="text" name="name" required maxlength="75" oninput="validateInput(this)" onpaste="validatePaste(event)">
+        Artist: <input type="text" name="artist" required maxlength="50" oninput="validateInput(this)" onpaste="validatePaste(event)">
+        Album: <input type="text" name="album" required maxlength="50" oninput="validateInput(this)" onpaste="validatePaste(event)">
         <button>
                 <h3 class="btn">
                 <a>Submit</a> 
                 </h3>
         </button> 
 </form>
+
+<script>
+        function validateInput(inputElement) {
+            const forbiddenChars = /[!@#$%^&*()_+={}\[\]:;"'<>,.?/~`\\|\\]/g; //forbidden characters for the input field
+            const inputValue = inputElement.value;
+            const cleanedValue = inputValue.replace(forbiddenChars, ''); //forbidden text replaced with " "
+            
+            if (inputValue !== cleanedValue) {
+                inputElement.value = cleanedValue;
+                alert('Special characters are not allowed.'); //sends alert
+            }
+        }
+
+        function validatePaste(event) {
+            // Get the pasted content from the clipboard
+            const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+
+            // Define a regular expression to allow only alphanumeric characters
+            const allowedChars = /^[a-zA-Z0-9\s]+$/;
+
+            // Check if the pasted content contains only allowed characters
+            if (!allowedChars.test(pastedText)) {
+                event.preventDefault(); // Prevent the paste
+                alert('Special characters are not allowed.');
+            }
+        }
+    </script>
 
 
 </body>
